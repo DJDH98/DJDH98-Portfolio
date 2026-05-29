@@ -116,6 +116,25 @@ export default function Home() {
         </div>
       </section>
 
+      <SectionReveal id="projects" className="section-shell scroll-mt-24 py-24">
+        <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+          <div>
+            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+              Featured Projects
+            </h2>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-neutral-400">
+              Two selected builds that show practical product thinking and
+              interactive front-end execution.
+            </p>
+          </div>
+        </div>
+        <div className="grid gap-6 lg:grid-cols-2">
+          {projects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
+        </div>
+      </SectionReveal>
+
       <SectionReveal id="about" className="section-shell scroll-mt-24 py-24">
         <div className="grid gap-12 lg:grid-cols-[0.72fr_1fr]">
           <h2 className="text-3xl font-semibold text-white sm:text-4xl">
@@ -157,25 +176,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </div>
-      </SectionReveal>
-
-      <SectionReveal id="projects" className="section-shell scroll-mt-24 py-24">
-        <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-          <div>
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
-              Featured Projects
-            </h2>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-neutral-400">
-              Two selected builds that show practical product thinking and
-              interactive front-end execution.
-            </p>
-          </div>
-        </div>
-        <div className="grid gap-6 lg:grid-cols-2">
-          {projects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
-          ))}
         </div>
       </SectionReveal>
 
