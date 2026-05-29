@@ -81,7 +81,7 @@ export default function Home() {
     <main id="top" className="min-h-screen bg-[#0a0a0a]">
       <Navbar />
 
-      <section className="section-shell flex min-h-[88svh] items-center pb-14 pt-28">
+      <section className="section-shell flex min-h-[70svh] items-center pb-10 pt-24">
         <div className="max-w-4xl">
           <p className="mb-5 text-sm font-medium tracking-[0.22em] text-indigo-300">
             DEVELOPER PORTFOLIO
@@ -116,7 +116,10 @@ export default function Home() {
         </div>
       </section>
 
-      <SectionReveal id="projects" className="section-shell scroll-mt-24 py-24">
+      <SectionReveal
+        id="projects"
+        className="section-shell scroll-mt-24 pb-24 pt-16"
+      >
         <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
           <div>
             <h2 className="text-3xl font-semibold text-white sm:text-4xl">
