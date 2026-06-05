@@ -25,7 +25,7 @@ export default function Icon() {
           fontFamily: "Inter, Arial, sans-serif",
         }}
       >
-        DJ
+        DH
       </div>
     ),
     size,
