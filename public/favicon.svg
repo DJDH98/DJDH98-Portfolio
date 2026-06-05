@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">DJDH98 portfolio icon</title>
+  <desc id="desc">Minimal DJ monogram with indigo glow on a dark developer portfolio mark.</desc>
+  <defs>
+    <radialGradient id="glow" cx="28%" cy="18%" r="85%">
+      <stop stop-color="#4f46e5"/>
+      <stop offset="0.42" stop-color="#11111a"/>
+      <stop offset="1" stop-color="#070708"/>
+    </radialGradient>
+    <linearGradient id="stroke" x1="96" y1="72" x2="416" y2="440" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="108" fill="url(#glow)"/>
+  <rect x="86" y="86" width="340" height="340" rx="78" fill="#0a0a0a" stroke="url(#stroke)" stroke-width="10"/>
+  <path d="M170 170h82c57 0 94 38 94 86s-37 86-94 86h-82V170Zm58 52v68h25c22 0 36-13 36-34s-14-34-36-34h-25Z" fill="#f8fafc"/>
+  <path d="M327 170h58v118c0 55-32 88-88 88-30 0-58-10-76-29l31-42c13 13 26 19 40 19 23 0 35-13 35-39V170Z" fill="#a5b4fc"/>
+  <path d="M139 392h234" stroke="#6366f1" stroke-width="14" stroke-linecap="round"/>
+</svg>
