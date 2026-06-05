@@ -8,8 +8,18 @@ export function ContactForm() {
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get("name") ?? "");
+    const email = String(formData.get("email") ?? "");
+    const message = String(formData.get("message") ?? "");
+    const subject = encodeURIComponent(`Portfolio enquiry from ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\n${message}`,
+    );
+
     setSent(true);
     event.currentTarget.reset();
+    window.location.href = `mailto:dalen@djdh98.dev?subject=${subject}&body=${body}`;
   }
 
   return (
@@ -20,7 +30,7 @@ export function ContactForm() {
           <input
             required
             name="name"
-            placeholder="YOUR NAME PLACEHOLDER"
+            placeholder="Your name"
             className="h-12 rounded-md border border-white/10 bg-white/[0.03] px-4 text-white outline-none transition-colors placeholder:text-neutral-600 focus:border-indigo-500"
           />
         </label>
@@ -30,7 +40,7 @@ export function ContactForm() {
             required
             type="email"
             name="email"
-            placeholder="YOUR EMAIL PLACEHOLDER"
+            placeholder="you@example.com"
             className="h-12 rounded-md border border-white/10 bg-white/[0.03] px-4 text-white outline-none transition-colors placeholder:text-neutral-600 focus:border-indigo-500"
           />
         </label>
@@ -41,7 +51,7 @@ export function ContactForm() {
           required
           name="message"
           rows={5}
-          placeholder="YOUR MESSAGE PLACEHOLDER"
+          placeholder="Tell me what you have in mind"
           className="resize-none rounded-md border border-white/10 bg-white/[0.03] px-4 py-3 text-white outline-none transition-colors placeholder:text-neutral-600 focus:border-indigo-500"
         />
       </label>
@@ -54,8 +64,7 @@ export function ContactForm() {
       </button>
       {sent ? (
         <p className="text-sm text-neutral-400">
-          Placeholder success state: connect this form to your preferred email
-          or backend service.
+          Your email client should open with the message ready to send.
         </p>
       ) : null}
     </form>

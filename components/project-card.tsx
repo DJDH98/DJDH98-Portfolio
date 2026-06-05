@@ -11,7 +11,7 @@ type Project = {
   description: string;
   tags: string[];
   previewLabel: string;
-  previewVariant: "dashboard" | "boids";
+  previewVariant: "dashboard" | "boids" | "calendar";
   screenshotSrc?: string;
 };
 
@@ -68,6 +68,8 @@ function ProjectPreview({ project }: { project: Project }) {
   const stylizedPreview =
     project.previewVariant === "dashboard" ? (
       <DashboardPreview label={project.previewLabel} />
+    ) : project.previewVariant === "calendar" ? (
+      <CalendarPreview label={project.previewLabel} />
     ) : (
       <BoidsPreview label={project.previewLabel} />
     );
@@ -230,6 +232,127 @@ function DashboardPreview({ label }: { label: string }) {
         </div>
       </div>
       <p className="absolute bottom-4 left-4 right-4 text-xs font-medium uppercase tracking-[0.18em] text-cyan-200/55">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+function CalendarPreview({ label }: { label: string }) {
+  const events = [
+    { day: 1, row: 1, text: "FROM - S04E06", type: "tv" },
+    { day: 1, row: 2, text: "Kraken", type: "movie" },
+    { day: 2, row: 1, text: "Hokum", type: "movie" },
+    { day: 3, row: 1, text: "Squatters", type: "tv" },
+    { day: 5, row: 1, text: "Cape Fear", type: "tv" },
+    { day: 8, row: 1, text: "FROM - S04E07", type: "tv" },
+    { day: 9, row: 1, text: "Mortal Kombat II", type: "movie" },
+    { day: 11, row: 1, text: "Criminal Minds", type: "tv" },
+    { day: 17, row: 1, text: "Ready or Not", type: "movie" },
+    { day: 18, row: 1, text: "The Bear", type: "tv" },
+    { day: 18, row: 2, text: "The Bear", type: "tv" },
+    { day: 18, row: 3, text: "The Bear", type: "tv" },
+    { day: 22, row: 1, text: "American Dad!", type: "tv" },
+    { day: 25, row: 1, text: "Criminal Minds", type: "tv" },
+    { day: 29, row: 1, text: "Rick and Morty", type: "tv" },
+  ];
+
+  return (
+    <div className="absolute inset-0 overflow-hidden bg-[#19191b]">
+      <div className="absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_12%_0%,rgba(239,68,68,0.24),transparent_40%)]" />
+      <div className="relative px-4 pt-3">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-red-400">
+              Unified Media Schedule
+            </p>
+            <h4 className="mt-1 text-3xl font-bold tracking-normal text-neutral-100">
+              HMG Calendar
+            </h4>
+          </div>
+          <div className="mt-3 hidden items-center gap-3 text-[10px] text-neutral-400 sm:flex">
+            <span className="rounded-md border border-white/10 bg-black/25 px-3 py-1 text-green-400">
+              Radarr and Sonarr synced
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-red-400" />
+              Movies
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-[#7ea7c2]" />
+              TV
+            </span>
+          </div>
+        </div>
+        <div className="mt-4 overflow-hidden rounded-md border border-white/10 bg-[#222224]">
+          <div className="flex items-center justify-between border-b border-white/10 px-3 py-2">
+            <div className="flex gap-1">
+              <span className="grid h-7 w-9 place-items-center rounded-l-md border border-white/10 text-lg leading-none text-neutral-300">
+                ‹
+              </span>
+              <span className="grid h-7 w-9 place-items-center rounded-r-md border border-white/10 text-lg leading-none text-neutral-300">
+                ›
+              </span>
+              <span className="ml-2 rounded-md border border-red-400/35 bg-red-500/15 px-3 py-1.5 text-[10px] font-semibold text-neutral-200">
+                Today
+              </span>
+            </div>
+            <div className="text-xl font-bold text-neutral-100">June 2026</div>
+            <div className="flex overflow-hidden rounded-md border border-white/10 text-[10px] font-medium">
+              <span className="bg-red-500/25 px-3 py-1.5 text-neutral-100">
+                Month
+              </span>
+              <span className="px-3 py-1.5 text-neutral-300">Agenda</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-7 border-b border-white/10 bg-[#242426] text-center text-[9px] font-semibold text-sky-100">
+            {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
+              <span key={day} className="border-r border-white/10 py-1 last:border-r-0">
+                {day}
+              </span>
+            ))}
+          </div>
+          <div className="grid grid-cols-7">
+            {Array.from({ length: 35 }).map((_, index) => {
+              const day = index === 0 ? 31 : index;
+              const isCurrent = index > 0 && index <= 30;
+              const dayEvents = events.filter((event) => event.day === day);
+
+              return (
+                <div
+                  key={index}
+                  className={`relative h-10 border-r border-t border-white/10 p-1 last:border-r-0 ${
+                    day === 5 ? "bg-red-500/10 ring-1 ring-inset ring-red-400/25" : ""
+                  }`}
+                >
+                  <span
+                    className={`absolute right-1 top-0.5 text-[10px] font-semibold ${
+                      isCurrent ? "text-neutral-300" : "text-neutral-600"
+                    }`}
+                  >
+                    {day}
+                  </span>
+                  <div className="mt-3 space-y-0.5">
+                    {dayEvents.slice(0, 3).map((event) => (
+                      <div
+                        key={`${event.day}-${event.row}-${event.text}`}
+                        className={`truncate rounded-sm px-1.5 py-0.5 text-[8px] font-bold leading-none ${
+                          event.type === "movie"
+                            ? "bg-red-500 text-black"
+                            : "bg-[#78a5c0] text-white"
+                        }`}
+                      >
+                        {event.text}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      <p className="absolute bottom-3 left-4 right-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-red-300/70">
         {label}
       </p>
     </div>

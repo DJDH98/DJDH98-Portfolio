@@ -47,6 +47,16 @@ const projects = [
     previewVariant: "boids" as const,
     screenshotSrc: "/projects/bird-boids.png",
   },
+  {
+    title: "HMG Calendar",
+    href: "https://calendar.harrismediagroup.co.uk/",
+    description:
+      "A self-hosted media calendar for tracking upcoming movies and TV episodes from Radarr and Sonarr. It brings release dates into one focused calendar interface with resilient service loading, agenda views, and useful detail panels for each title.",
+    tags: ["JavaScript", "Docker", "Unraid", "Radarr", "Sonarr"],
+    previewLabel: "MEDIA RELEASE CALENDAR",
+    previewVariant: "calendar" as const,
+    screenshotSrc: "/projects/hmg-calendar.png",
+  },
 ];
 
 const links = [
@@ -71,7 +81,7 @@ const links = [
   {
     label: "Email",
     href: "mailto:dalen@djdh98.dev",
-    description: "OBVIOUS PLACEHOLDER: replace with your preferred email.",
+    description: "The best route for project ideas, collaboration, or opportunities.",
     icon: Mail,
   },
 ];
@@ -126,8 +136,8 @@ export default function Home() {
               Featured Projects
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-7 text-neutral-400">
-              Two selected builds that show practical product thinking and
-              interactive front-end execution.
+              Selected builds that show practical product thinking, homelab
+              tooling, and interactive front-end execution.
             </p>
           </div>
         </div>
@@ -200,9 +210,9 @@ export default function Home() {
               Let&apos;s connect
             </h2>
             <p className="mt-5 max-w-xl text-base leading-8 text-neutral-400">
-              OBVIOUS PLACEHOLDER: Share a project, collaboration idea, or
-              opportunity. Replace this copy with your preferred contact
-              invitation and response expectations.
+              Have a project idea, collaboration, or opportunity in mind? Send
+              a note with the shape of what you&apos;re building and I&apos;ll
+              get back to you when I can.
             </p>
             <a
               href="mailto:dalen@djdh98.dev"
